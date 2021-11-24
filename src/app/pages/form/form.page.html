@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <fieldset formGroupName="name">
+
+      <legend>Persönliche Daten</legend>
+      <ion-label for="first">Vorname</ion-label>
+      <ion-input aria-label="firstname" formControlName="first" id="first"> </ion-input>
+
+      <ion-label for="last">Nachname</ion-label>
+      <ion-input aria-label="lastname" formControlName="last" id="last"></ion-input>
+    </fieldset>
+
+    <fieldset formGroupName="contact">
+      <legend>Kontaktinformationen</legend>
+
+      <ion-label for="email">E-Mail (erforderlich)</ion-label>
+      <input #emailRef aria-label="email" [attr.aria-invalid]="emailIsInvalidAndTouched" formControlName="email"
+        id="email" type="email" required />
+      <div *ngIf="emailIsInvalidAndTouched" role="alert" aria-describedby="email-label" tabindex="0" class="error">
+        Please enter a valid email address.
+      </div>
+    </fieldset>
+
+    <button>Volkesbegehren unterstützen</button>
+
+  </form>
+
+  <!-- form summary -->
+  <div *ngIf="this.form.invalid && formSubmitted" role="alert" class="status-error">
+    The form has the following errors that need to be corrected:
+
+    <button (click)="emailRef.focus()" *ngIf="emailIsInvalid">
+      Please enter a valid email address.
+    </button>
+
+    <div *ngIf="passwordIsInvalid">
+      Password must be at least 6 characters.
+    </div>
+
+    <div (click)="confirmRef.focus()" *ngIf="passwordsDoNotMatch">
+      Passwords must match.
+    </div>
+  </div>
+
+
+
+</ion-content>
