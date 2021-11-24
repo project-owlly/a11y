@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AuthModule } from 'angular-auth-oidc-client';
+import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
 
 
 @NgModule({
@@ -8,12 +8,13 @@ import { AuthModule } from 'angular-auth-oidc-client';
               authority: '/proxy/.well-known/openid-configuration',
               redirectUrl: window.location.origin,
               postLogoutRedirectUri: window.location.origin,
-              clientId: 'please-enter-clientId',
-              scope: 'openid profle address', // 'openid profile offline_access ' + your scopes
+              clientId: 'owllyApp',
+              scope: 'openid email profile address',
               responseType: 'code',
               silentRenew: true,
               useRefreshToken: true,
               renewTimeBeforeTokenExpiresInSeconds: 30,
+              logLevel: LogLevel.Debug,
           }
       })],
     exports: [AuthModule],
