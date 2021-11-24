@@ -28,6 +28,7 @@
     "@ionic/angular": "^6.0.0-rc.3",
     "@ionic/core": "^6.0.0-rc.3",
     "@stencil/core": "^2.11.0",
+    "angular-auth-oidc-client": "12.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
